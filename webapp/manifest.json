@@ -27,9 +27,6 @@
         "uri": "/odata/v4/SerialService/",
         "type": "OData",
         "settings": {
-          "annotations": [
-            "annotation"
-          ],
           "odataVersion": "4.0"
         }
       }
@@ -86,12 +83,14 @@
         }
       },
       "": {
+        "type": "sap.ui.model.odata.v4.ODataModel",
         "dataSource": "mainService",
         "preload": true,
         "settings": {
           "operationMode": "Server",
           "autoExpandSelect": true,
-          "earlyRequests": true
+          "earlyRequests": true,
+          "synchronizationMode": "None"
         }
       },
       "@i18n": {
@@ -111,9 +110,9 @@
           "target": "SerialDataList"
         },
         {
-          "pattern": "SerialData({key}):?query:",
-          "name": "SerialDataObjectPage",
-          "target": "SerialDataObjectPage"
+          "pattern": "SerialDataEdit(s4Key={s4Key},IsActiveEntity=true):?query:",
+          "name": "SerialDataEditObjectPage",
+          "target": "SerialDataEditObjectPage"
         }
       ],
       "targets": {
@@ -128,27 +127,20 @@
               "navigation": {
                 "SerialData": {
                   "detail": {
-                    "route": "SerialDataObjectPage"
-                  }
-                }
-              },
-              "controlConfiguration": {
-                "@com.sap.vocabularies.UI.v1.LineItem": {
-                  "tableSettings": {
-                    "type": "GridTable"
+                    "route": "SerialDataEditObjectPage"
                   }
                 }
               }
             }
           }
         },
-        "SerialDataObjectPage": {
+        "SerialDataEditObjectPage": {
           "type": "Component",
-          "id": "SerialDataObjectPage",
+          "id": "SerialDataEditObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "contextPath": "/SerialData",
+              "contextPath": "/SerialDataEdit",
               "editableHeaderContent": false
             }
           }
