@@ -110,7 +110,7 @@
           "target": "SerialDataList"
         },
         {
-          "pattern": "SerialDataEdit(s4Key={s4Key},IsActiveEntity=true):?query:",
+          "pattern": "SerialDataEdit(s4Key={Key},IsActiveEntity=true):?query:",
           "name": "SerialDataEditObjectPage",
           "target": "SerialDataEditObjectPage"
         }
@@ -122,10 +122,10 @@
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "contextPath": "/SerialData",
+              "contextPath": "/SerialDataEdit",
               "variantManagement": "Page",
               "navigation": {
-                "SerialData": {
+                "SerialDataEdit": {
                   "detail": {
                     "route": "SerialDataEditObjectPage"
                   }
