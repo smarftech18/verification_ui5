@@ -16,18 +16,22 @@
       "toolsId": "47bdb11f-183f-4322-9411-99d21c739b91"
     },
     "dataSources": {
-      "annotation": {
-        "type": "ODataAnnotation",
-        "uri": "annotations/annotation.xml",
-        "settings": {
-          "localUri": "annotations/annotation.xml"
-        }
-      },
       "mainService": {
         "uri": "/odata/v4/SerialService/",
         "type": "OData",
         "settings": {
-          "odataVersion": "4.0"
+          "odataVersion": "4.0",
+          "localUri": "localService/mainService/metadata.xml",
+          "annotations": [
+            "annotation"
+          ]
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotations.xml",
+        "settings": {
+          "localUri": "annotations/annotations.xml"
         }
       }
     },
@@ -110,9 +114,9 @@
           "target": "SerialDataList"
         },
         {
-          "pattern": "SerialDataEdit(s4Key={Key},IsActiveEntity=true):?query:",
-          "name": "SerialDataEditObjectPage",
-          "target": "SerialDataEditObjectPage"
+          "pattern": "SerialData({key}):?query:",
+          "name": "SerialDataObjectPage",
+          "target": "SerialDataObjectPage"
         }
       ],
       "targets": {
@@ -122,26 +126,36 @@
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "contextPath": "/SerialDataEdit",
+              "contextPath": "/SerialData",
               "variantManagement": "Page",
               "navigation": {
-                "SerialDataEdit": {
+                "SerialData": {
                   "detail": {
-                    "route": "SerialDataEditObjectPage"
+                    "route": "SerialDataObjectPage"
                   }
                 }
               }
             }
           }
         },
-        "SerialDataEditObjectPage": {
+        "SerialDataObjectPage": {
           "type": "Component",
-          "id": "SerialDataEditObjectPage",
+          "id": "SerialDataObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "contextPath": "/SerialDataEdit",
-              "editableHeaderContent": false
+              "contextPath": "/SerialData",
+              "editableHeaderContent": false,
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.FieldGroup#i18nserialeditsection": {
+                  "fields": {
+                    "Serial_Edit_Section": {
+                      "template": "verifications.verificationui5.ext.fragment.Serial_Edit_Section",
+                      "label": "機番編集ラベル"
+                    }
+                  }
+                }
+              }
             }
           }
         }

@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+  <VBox id="custom::serialEditVBox" class="sapUiSmallMargin">
+    <Title id="custom::serialEditTitle" text="更新" level="H3" />
+
+    <Label id="custom::serialEditLabel" text="新しいシリアル番号" />
+    <Input
+      id="custom::serialEditInput"
+      value="{viewModel>/newSerialNo}"
+      editable="true"
+      width="20rem" />
+
+    <HBox id="custom::serialEditButtonBox" class="sapUiSmallMarginTop">
+      <Button
+        id="custom::serialEditSaveButton"
+        text="保存"
+        type="Emphasized"
+        press=".onSaveSerial" />
+    </HBox>
+  </VBox>
+</core:FragmentDefinition>
